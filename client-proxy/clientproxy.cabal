@@ -1,0 +1,29 @@
+name: clientproxy
+version: 0.1.0.0
+synopsis: A simple client proxy interface
+description: Please see README.md
+homepage: https://github.com/TomasBarry/DistroProject#readme
+license: MIT
+license-file: LICENSE
+author: Tomas Barry
+maintainer: tomas.barry@hotmail.com
+copyright: 2016 Tomas Barry
+category: Web
+build-type: Simple
+cabal-version:       >=1.10
+
+executable client
+  hs-source-dirs: app
+  main-is: Main.hs
+  ghc-options:      -threaded -rtsopts -with-rtsopts=-N
+  other-modules: 
+  build-depends:  base
+                , network
+                , bytestring
+
+  default-language:    Haskell2010
+
+
+source-repository head
+  type:     git
+  location: https://github.com/TomasBarry/DistroProject
