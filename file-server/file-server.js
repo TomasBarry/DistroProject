@@ -6,7 +6,7 @@ const file_server = {
 		let args = message.split('\n');
 		let fileName = args[1].trim();
 		console.log(fileName);
-		fs.readFile(fileName, function(err, data) {
+		fs.readFile(__dirname + '/Files/' + fileName, function(err, data) {
 			if (err) {
 				socket.write('Error reading file: ' + err);
 			}
@@ -20,7 +20,7 @@ const file_server = {
 		let args = message.split('\n');
 		let fileName = args[1].trim();
 		let fileData = args[2].trim();
-		fs.writeFile(fileName, fileData, (err) => {
+		fs.writeFile(__dirname + '/Files/' + fileName, fileData, (err) => {
 			  if (err) {
 				socket.write('Error writing file');
 			  }
