@@ -4,16 +4,13 @@
   "description": "Simple file server",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node index.js"
+    "start": "node index.js 8000",
+    "test": "node index.js 8000"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/TomasBarry/DistroProject/file-server"
   },
   "author": "Tomas Barry",
-  "license": "MIT",
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  }
+  "license": "MIT"
 }
