@@ -16,6 +16,9 @@ var server = net.createServer((socket) => {
 		else if (message.indexOf('PUT') === 0) {
 			file_server.putFile(socket, message);
 		}
+		else if (message.indexOf('LIST') === 0) {
+			file_server.listFiles(socket, message);
+		}
 		else {
 			file_server.undefinedCommand(socket, message);
 		}

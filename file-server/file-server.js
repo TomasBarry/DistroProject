@@ -2,11 +2,22 @@ const fs = require('fs');
 
 const file_server = {
 
+	listFiles: function(socket, message) {
+		fs.readdir(__dirname + '/Files/', (err, files) => {
+			if (err) {
+				socket.write('Error reading files in /Files/');
+			}
+			else {
+				socket.write(files.toString());
+			}
+		});
+	},
+
 	getFile: function(socket, message) {
 		let args = message.split('\n');
 		let fileName = args[1].trim();
 		console.log(fileName);
-		fs.readFile(__dirname + '/Files/' + fileName, function(err, data) {
+		fs.readFile(__dirname + '/Files/' + fileName, (err, data) => {
 			if (err) {
 				socket.write('Error reading file: ' + err);
 			}
