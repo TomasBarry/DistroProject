@@ -1,7 +1,6 @@
 const net = require('net');
 const file_server = require('./file-server.js');
 
-
 const port = process.argv[2];
 
 
@@ -18,6 +17,9 @@ var server = net.createServer((socket) => {
 		}
 		else if (message.indexOf('LIST') === 0) {
 			file_server.listFiles(socket, message);
+		}
+		else if (message.indexOf('LIVE') === 0) {
+			file_server.heartbeat(socket, message);
 		}
 		else {
 			file_server.undefinedCommand(socket, message);

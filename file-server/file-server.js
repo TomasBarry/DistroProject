@@ -41,6 +41,10 @@ const file_server = {
 		});
 	},
 
+	heartbeat: function(socket, message) {
+		socket.write('I am alive');
+	},
+
 	undefinedCommand: function(socket, message) {
 		socket.write('Could not understand command');
 	}
