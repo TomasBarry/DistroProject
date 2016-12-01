@@ -20,4 +20,5 @@ cabal.project.local
 
 *.swp
 node_modules
-
+pubkey.pem
+privkey.pem
