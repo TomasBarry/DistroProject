@@ -1,0 +1,16 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "Basic Auth server",
+  "main": "index.js",
+  "scripts": {
+	  "start": "node index.js 8001",
+	  "test": "node index.js 8001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TomasBarry/DistroProject/auth-server"
+  },
+  "author": "Tomas Barry",
+  "license": "MIT"
+}
