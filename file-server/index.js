@@ -1,11 +1,16 @@
+// Define imports
 const net = require('net');
 const file_server = require('./file-server.js');
 
-const port = process.argv[2];
+
+// define constants
+const port = process.argv[2] || 8000;
 
 
+// create server object
 var server = net.createServer((socket) => {
-
+	
+	// handler for when socket receives data
 	socket.on('data', (data) => {
 		let message = data.toString();
 		console.log('Received ' + message);
@@ -25,20 +30,23 @@ var server = net.createServer((socket) => {
 			file_server.undefinedCommand(socket, message);
 		}
 	});
+	// handler for when socket is closed
 	socket.on('close', (had_err) => {
 		console.log('Socket closed');
 	});
+	// handler for when socket closes due to error
 	socket.on('error', (err) => {
 		console.log('Socket error');
 	});
 });
 
-
+// handler for when server closes due to error
 server.on('error', (err) => {
 	console.log('server error');
 });
 
 
+// start the server on the specified port
 server.listen(port, () => {
 	console.log('Listening on port: ' + port);
 });
