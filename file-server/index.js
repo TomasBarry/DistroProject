@@ -1,19 +1,15 @@
 // Define imports
 const net = require('net');
-const crypto = require('crypto');
-const fs = require('fs');
 const auth_socket = require('net').Socket();
 const dir_socket = require('net').Socket();
 
 const file_server = require('./file-server.js');
 const socketVariables = require('./socketVariables.js');
-
+const encryption_handler = require('./encryption_handler.js');
 
 // define constants
 const port = process.argv[2] || 8000;
-const file_server_name = process.arg[3];
-const publicKey = fs.readFileSync(__dirname + '/publickey.pem', 'utf8');
-const privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');                               
+const file_server_name = process.arg[3];                               
 
 
 // Register with Auth Server and directory server
@@ -30,9 +26,7 @@ var server = net.createServer((socket) => {
 	
 	// handler for when socket receives data
 	socket.on('data', (data) => {
-		let encrypted_message = data.toString();
-		let decBuffer = new Buffer(encrypted_message, "base64");
-		let message = crypto.privateDecrypt(privateKey, decBuffer); 
+		let message = encryption_handler.decrypt(data.toString()); 
 		console.log('Received ' + message);
 		if (message.indexOf('GET') === 0) {
 			file_server.getFile(socket, message);
