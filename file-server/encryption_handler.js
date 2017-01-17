@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 
-const publicKey = fs.readFileSync(__dirname + '/publickey.pem', 'utf8');
+const publicKey = fs.readFileSync(__dirname + '/pubkey.pem', 'utf8');
 const privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
 
 const handler = {

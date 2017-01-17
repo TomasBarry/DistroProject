@@ -9,7 +9,7 @@ const encryption_handler = require('./encryption_handler.js');
 
 // define constants
 const port = process.argv[2] || 8000;
-const file_server_name = process.arg[3];                               
+const file_server_name = process.argv[3];                               
 
 
 // Register with Auth Server and directory server
@@ -56,7 +56,7 @@ var server = net.createServer((socket) => {
 
 // handler for when server closes due to error
 server.on('error', (err) => {
-	console.log('server error');
+	console.log('server error: ' + err.toString());
 });
 
 
