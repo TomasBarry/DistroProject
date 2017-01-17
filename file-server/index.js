@@ -1,10 +1,14 @@
 // Define imports
 const net = require('net');
+const crypto = require('crypto');
+const fs = require('fs');
+
 const file_server = require('./file-server.js');
 
 
 // define constants
 const port = process.argv[2] || 8000;
+const privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');                               
 
 
 // create server object
@@ -12,7 +16,9 @@ var server = net.createServer((socket) => {
 	
 	// handler for when socket receives data
 	socket.on('data', (data) => {
-		let message = data.toString();
+		let encrypted_message = data.toString();
+		let decBuffer = new Buffer(encrypted_message, "base64");
+		let message = crypto.privateDecrypt(privateKey, decBuffer); 
 		console.log('Received ' + message);
 		if (message.indexOf('GET') === 0) {
 			file_server.getFile(socket, message);
