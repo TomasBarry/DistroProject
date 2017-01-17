@@ -13,13 +13,13 @@ const file_server_name = process.arg[3];
 
 
 // Register with Auth Server and directory server
-auth_socket.connect(socketVariables.auth_serverPort, socketVariables.auth_serverIPAddress);
-auth_socket.write('ADD\nfileserver' + file_server_name + '\n' + publicKey);
-auth_socket.close();
+//auth_socket.connect(socketVariables.auth_serverPort, socketVariables.auth_serverIPAddress);
+//auth_socket.write('ADD\nfileserver' + file_server_name + '\n' + publicKey);
+//auth_socket.close();
 
-dir_socket.connect(socketVariables.dir_serverPort, socketVariables.dir_serverIPAddress);
-dir_socket.write('TODO');
-dir_socket.close();
+//dir_socket.connect(socketVariables.dir_serverPort, socketVariables.dir_serverIPAddress);
+//dir_socket.write('TODO');
+//dir_socket.close();
 
 // create server object
 var server = net.createServer((socket) => {
