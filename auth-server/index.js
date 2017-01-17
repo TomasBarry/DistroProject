@@ -6,21 +6,6 @@ const auth_server = require('./auth-server.js');
 
 const port = process.argv[2];
 
-//var str = 'hello there';
-
-//var publicKey = fs.readFileSync(__dirname + '/pubkey.pem', "utf8");
-//var privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
-//var encBuffer = new Buffer(str);
-//var encrypted = crypto.publicEncrypt(publicKey, encBuffer);
-
-//var decBuffer = new Buffer(encrypted, "base64");
-//var decrypted = crypto.privateDecrypt(privateKey, decBuffer);
-
-
-//console.log(str);
-//console.log(encrypted.toString("base64"));
-//console.log(decrypted.toString("utf8"));
-
 
 var server = net.createServer((socket) => {
 
