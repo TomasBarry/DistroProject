@@ -4,6 +4,7 @@ The format of this README is a description of how each service acts from the poi
 
 ## The Client
 A client can do 3 things:
+
 1. Register with the Auth server 
 2. Request a file from the Directory server
 3. Upload a file to the file system
