@@ -2,14 +2,28 @@
 const net = require('net');
 const crypto = require('crypto');
 const fs = require('fs');
+const auth_socket = require('net').Socket();
+const dir_socket = require('net').Socket();
 
 const file_server = require('./file-server.js');
+const socketVariables = require('./socketVariables.js');
 
 
 // define constants
 const port = process.argv[2] || 8000;
+const file_server_name = process.arg[3];
+const publicKey = fs.readFileSync(__dirname + '/publickey.pem', 'utf8');
 const privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');                               
 
+
+// Register with Auth Server and directory server
+auth_socket.connect(socketVariables.auth_serverPort, socketVariables.auth_serverIPAddress);
+auth_socket.write('ADD\nfileserver' + file_server_name + '\n' + publicKey);
+auth_socket.close();
+
+dir_socket.connect(socketVariables.dir_serverPort, socketVariables.dir_serverIPAddress);
+dir_socket.write('TODO');
+dir_socket.close();
 
 // create server object
 var server = net.createServer((socket) => {
