@@ -8,7 +8,7 @@ const port = process.argv[2];
 
 
 var server = net.createServer((socket) => {
-
+	console.log('Socket connection');
 	socket.on('data', (data) => {
 		let message = data.toString();
 		console.log('Received ' + message);
