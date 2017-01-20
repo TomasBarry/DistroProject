@@ -13,7 +13,7 @@
   },
   "author": "Tomas Barry",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "mongodb": "^2.2.12"
   }
 }

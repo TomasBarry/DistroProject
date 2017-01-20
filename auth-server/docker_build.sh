@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t barryto/file-server .
+docker build -t barryto/auth-server .
