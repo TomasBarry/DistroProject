@@ -3,7 +3,6 @@ const net = require('net');
 
 const init_handler = require('./init.js');
 const file_server = require('./file-server.js');
-const socketVariables = require('./socketVariables.js');
 const encryption_handler = require('./encryption_handler.js');
 
 // define constants
@@ -19,7 +18,6 @@ var server = net.createServer((socket) => {
 	// handler for when socket receives data
 	socket.on('data', (data) => {
 		let message = encryption_handler.decrypt(data.toString()); 
-		console.log('Received ' + message);
 		if (message.indexOf('GET') === 0) {
 			file_server.getFile(socket, message);
 		}
