@@ -15,5 +15,10 @@
   "license": "MIT",
   "dependencies": {
     "mongodb": "^2.2.12"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "mongodb": "^2.2.21",
+    "utf8": "^2.1.2"
   }
 }
