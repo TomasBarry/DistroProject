@@ -23,3 +23,4 @@ node_modules
 pubkey.pem
 privkey.pem
 testcommand.txt
+responsefile.txt
