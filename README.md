@@ -31,7 +31,7 @@ Clients do not know where the File Servers are. They must ask the Directory Serv
 8. Election for master file server (Directory Server and File Server)
 
 ## Languages
-The client is written in Haskell
-All other servers are written in NodeJS
-Bash scripts are spread across the project to build and test the services
-Dockerfiles are used to put the services into Docker containers
+1. The client is written in Haskell
+2. All other servers are written in NodeJS
+3. Bash scripts are spread across the project to build and test the services
+4. Dockerfiles are used to put the services into Docker containers
