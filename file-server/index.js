@@ -17,7 +17,8 @@ var server = net.createServer((socket) => {
 	
 	// handler for when socket receives data
 	socket.on('data', (data) => {
-		let message = encryption_handler.decrypt(data.toString()); 
+		let message = data.toString();
+		//let message = encryption_handler.decrypt(data.toString()); 
 		if (message.indexOf('GET') === 0) {
 			file_server.getFile(socket, message);
 		}
