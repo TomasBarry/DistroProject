@@ -20,8 +20,8 @@ printUsageInstructions :: IO ()
 printUsageInstructions = do
     Prelude.putStrLn "What is your command?"
     Prelude.putStrLn "You can either get or put a file"
-    Prelude.putStrLn "GET\n<FILE NAME>"
-    Prelude.putStrLn "PUT\n<FILE_NAME>\n<FILE_CONTENTS>"
+    Prelude.putStrLn "GET:<FILE NAME>"
+    Prelude.putStrLn "PUT:<FILE_NAME>:<FILE_CONTENTS>"
 
 
 setupClientSocket :: String -> String -> IO Socket.Socket
@@ -39,8 +39,8 @@ connectToRemoteSocket socket ip port = do
 readSock :: Socket.Socket -> Int -> IO [B.ByteString] -> IO B.ByteString 
 readSock _ 0 bytes = fmap B.concat bytes
 readSock socket _ message = do
-    msg <- BS.recv socket 1
-    readSock socket (B.length msg) $ message >>= (\p -> return(p ++ [msg]))
+    msg <- BS.recv socket 4096
+    readSock socket 0 $ message >>= (\p -> return(p ++ [msg]))
 
 
 main :: IO ()
@@ -49,11 +49,12 @@ main = do
     socket <- setupClientSocket lip lport
     connectToRemoteSocket socket rip rport
     printUsageInstructions
-    let command = "GET\na.txt"
+    putStrLn "Your command:"
+    command <- getLine
     putStrLn command
     BS.sendAll socket $ C.pack command
     response <-  readSock socket 1 (return [])
     re <- return $ C.unpack response 
-    writeFile "/a.txt" re
+    writeFile "responsefile.txt" re
     Socket.close socket
 
