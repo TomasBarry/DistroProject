@@ -1,18 +1,19 @@
 const crypto = require('crypto');
 const fs = require('fs');
 
-const publicKey = fs.readFileSync(__dirname + '/pubkey.pem', 'utf8');
-const privateKey = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
+const public_key = fs.readFileSync(__dirname + '/pubkey.pem', 'utf8');
+const private_key = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
 
 const handler = {
 	decrypt: function(message) {
-		let decBuffer = new Buffer(message, "base64");
-		return crypto.privateDecrypt(privateKey, decBuffer);
+		console.log('here:\n' + message);
+		let enc_buffer = new Buffer(message, "base64");
+		return crypto.privateDecrypt(private_key, enc_buffer).toString('utf8')
 	},
 
 	encrypt: function(message) {
-		let encBuffer = new Buffer(message);
-		return crypto.publicEncrypt(publicKey, encBuffer);
+		let enc_buffer = new Buffer(message);
+		return crypto.publicEncrypt(public_key, enc_buffer);
 	}
 };
 
