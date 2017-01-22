@@ -1,5 +1,22 @@
 # CS4032 Distributed Systems Project
 
+## Overview
+We were tasked with building a distributed file server. This file server was to be secure and capable of handling multiple clients and replica file servers. A number of challenges were presented by this project however by tackling the project methodically the entire system could be developed.
+
+The development procedure was as follows:
+
+1. Map out the system on paper and how each services is conneced
+2. Define the messages that would be passed between services
+3. Establish languages and tools to be used in the project as well as research packages provided by those languages
+4. Prepare VMs for development
+  * Install language dependencies etc
+5. Write each service independently
+6. Connect services and test
+7. Test entire system and fix bugs
+8. Enhance system after analysis
+
+Each of these steps took a considerable amount of time to review and test, but the time spent mapping the communications for example paid off in later stages as many of the problems faced in later stages had already been solved on paper.
+
 The format of this README is a description of how each service acts from the point of view of a service
 
 ## The Client
@@ -29,3 +46,9 @@ Clients do not know where the File Servers are. They must ask the Directory Serv
 6. Transactions (the system)
 7. Lock Service (Directory Server)
 8. Election for master file server (Directory Server and File Server)
+
+## Languages
+1. The client is written in Haskell
+2. All other servers are written in NodeJS
+3. Bash scripts are spread across the project to build and test the services
+4. Dockerfiles are used to put the services into Docker containers
