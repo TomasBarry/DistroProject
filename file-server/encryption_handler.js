@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 const fs = require('fs');
 
-const public_key = fs.readFileSync(__dirname + '/pubkey.pem', 'utf8');
-const private_key = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
+const public_key = fs.readFileSync(__dirname + '/Keys/pubkey.pem', 'utf8');
+const private_key = fs.readFileSync(__dirname + '/Keys/privkey.pem', 'utf8');
 
 const handler = {
 	decrypt: function(message) {
