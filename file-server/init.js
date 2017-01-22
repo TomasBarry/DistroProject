@@ -5,7 +5,7 @@ const dir_socket = require('net').Socket();
 const socket_variables = require('./socket_variables.js');
 
 const file_server_name = process.argv[3];
-const public_key = fs.readFileSync(__dirname + '/pubkey.pem', 'utf8');
+const public_key = fs.readFileSync(__dirname + '/Keys/pubkey.pem', 'utf8');
 
 const init = {
 	init: function() {
