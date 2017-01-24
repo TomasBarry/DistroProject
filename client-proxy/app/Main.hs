@@ -6,11 +6,9 @@ import qualified Network.Socket.ByteString as BS
 import qualified Data.ByteString.Char8 as C
 import qualified Data.ByteString as B
 
-
-type Address = String
-type Port = String
-data Server = Server (Address, Port)
-
+import Address
+import Port
+import Server
 
 directoryServer :: Address -> Port -> Server
 directoryServer ip port = Server (ip, port)
