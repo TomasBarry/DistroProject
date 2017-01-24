@@ -16,7 +16,7 @@ executable client
   hs-source-dirs: app
   main-is: Main.hs
   ghc-options:      -threaded -rtsopts -with-rtsopts=-N
-  other-modules: 
+  other-modules: Port, Address, Server
   build-depends:  base
                 , network
                 , network-info
