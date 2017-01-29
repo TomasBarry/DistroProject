@@ -3,6 +3,12 @@
 ## Overview
 We were tasked with building a distributed file server. This file server was to be secure and capable of handling multiple clients and replica file servers. A number of challenges were presented by this project however by tackling the project methodically the entire system could be developed.
 
+Consider the following description of how files are exchanged by the server:
+A Client registers with the Auth server. If a client wants a file `a.txt` then it encrypts a message using it's private key and sends that message to the directory server. The directory server requests the public key for that user so it can interpret the message. The directory server decides what File server should handle the request and forwards the original (encrypted) request to the chosen file server. The file server decrypts the message and sends back `a.txt` encrypted with the users public key.
+
+This ensures that only the appropriate individuals in the system can decode messages and no malicious third party can see what a user is doing.
+
+## Development
 The development procedure was as follows:
 
 1. Map out the system on paper and how each services is conneced
